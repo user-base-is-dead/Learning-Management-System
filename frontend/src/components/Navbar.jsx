@@ -55,7 +55,7 @@ const Navbar = () => {
                         );
                         })}
                     </div>
-                    <div>
+                    <div className={navbarStyles.authContainer}>
                         
                     </div>
                 </div>
