@@ -11,7 +11,7 @@ const Home = () => {
       <Banner/>
       <HomeCourses/>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
