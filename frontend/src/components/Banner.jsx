@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { bannerStyles, customStyles } from "../assets/dummyStyles";
 import { features, floatingIcons } from "../assets/dummyBanner"
-import { Circle, CircleCheck, CircleCheckBig, Sparkle } from "lucide-react";
+import { Circle, CircleCheck, CircleCheckBig, Sparkle, X } from "lucide-react";
 import bannerImg from "../assets/Bannerimage.jpg"
 import video from "../assets/BannerVideo.mp4"
 
@@ -71,13 +71,15 @@ const Banner = () => {
       {showVideo && (
         <div className={bannerStyles.videoModal.overlay}>
           <div className={bannerStyles.videoModal.container}>
-            <iframe src={video} 
-            className={bannerStyles.videoModal.iframe} 
-            title="Demo Video" 
-            allow="auto-play; encrypted-media"
-            allowFullScreen>
-
-            </iframe>
+            <video
+              className={bannerStyles.videoModal.iframe}
+              controls
+              autoPlay
+              playsInline
+            >
+              <source src={video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
             <button onClick={() => setShowVideo(false)} className={bannerStyles.videoModal.closeButton}>
               <span>
                 <X className={bannerStyles.videoModal.closeIcon}/>
