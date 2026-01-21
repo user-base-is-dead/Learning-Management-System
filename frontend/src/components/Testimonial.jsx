@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import testimonials from "../assets/dummyTestimonial"
 import { testimonialStyles } from "../assets/dummyStyles"
-import { MessageSquareQuote } from "lucide-react";
+import { BadgeCheck, CalendarDays, MessageSquareQuote } from "lucide-react";
 
 const Testimonial = () => {
 
@@ -184,10 +184,28 @@ const Testimonial = () => {
                                     </div>
                                 </div>
                             </div>
+                            {/* message */}
+                            <blockquote className={testimonialStyles.message}>
+                                <span className={testimonialStyles.quoteMark}>"</span>
+                                {t.message}
+                                <span className={testimonialStyles.quoteMark}>"</span>
+                            </blockquote>
+
+                            <div className={testimonialStyles.footer}>
+                                <div className={testimonialStyles.verified}>
+                                    <BadgeCheck className={testimonialStyles.verifiedIcon}/>
+                                    <span>Verified Student</span>
+                                </div>
+                                <div className={testimonialStyles.date}>
+                                    <CalendarDays className={testimonialStyles.dateIcon}/>
+                                    <span>2025</span>
+                                </div>
+                            </div>
                         </article>
                     </div>
                 ))}
             </div>
+            <style jsx>{testimonialStyles.animations}</style>
         </section>
     );
 };
