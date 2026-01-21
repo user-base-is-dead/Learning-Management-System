@@ -11,6 +11,11 @@ const Testimonial = () => {
                         Student Testimonials
                     </span>
                 </div>
+                <h2 className={testimonialStyles.title}>
+                    <span className={testimonialStyles.titleGradient}>
+                        Voice of Success
+                    </span>
+                </h2>
             </div>
         </section>
     )
