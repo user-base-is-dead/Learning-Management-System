@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { homeCoursesStyles } from "../assets/dummyStyles"
 import { coursesData } from "../assets/dummyHdata"
 import { Star, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { Slide, toast } from "react-toastify";
 
 const HomeCourses = () => {
     const navigate = useNavigate();
@@ -89,8 +89,8 @@ const HomeCourses = () => {
                                     setHoverRatings((s) => ({ ...s, [course.id]: 0 }))
                                 }
                                 className={`${homeCoursesStyles.starButton} ${filled
-                                        ? homeCoursesStyles.starButtonActive
-                                        : homeCoursesStyles.starButtonInactive
+                                    ? homeCoursesStyles.starButtonActive
+                                    : homeCoursesStyles.starButtonInactive
                                     }`}
                                 style={{ background: "transparent" }}
                             >
@@ -123,16 +123,68 @@ const HomeCourses = () => {
                     {visibleCourse.map((course) => {
                         const isFree = !!course.isFree || !course.price;
                         return (
-                            <div key={course.id} onClick={() => handleCourseClick(course.id)} className={homeCoursesStyles.coursesGrid}>
+                            <div key={course.id} onClick={() => handleCourseClick(course.id)} className={homeCoursesStyles.courseCard}>
                                 <div className={homeCoursesStyles.imageContainer}>
                                     <img src={course.image} alt={course.name} className={homeCoursesStyles.courseImage} loading="lazy" />
                                 </div>
-                            <div className={homeCoursesStyles.courseInfo}>
-                                <h3 className={`${courseFont} ${homeCoursesStyles.courseName}`}></h3>
-                            </div>
+                                <div className={homeCoursesStyles.courseInfo}>
+                                    <h3 className={`${courseFont} ${homeCoursesStyles.courseName}`}>
+                                        {course.name}
+                                    </h3>
+                                    <div className={`${detail} ${homeCoursesStyles.teacherInfo}`}>
+                                        <User size={15} className={homeCoursesStyles.teacherIcon} />
+                                        <span className={homeCoursesStyles.teacherName}>
+                                            {course.teacher}
+                                        </span>
+                                    </div>
+                                    <div className={homeCoursesStyles.ratingContainer}>
+                                        {renderInteractiveStars(course)}
+                                    </div>
+                                    <div className={homeCoursesStyles.pricingContainer}>
+                                        {isFree ? (
+                                            <span className={homeCoursesStyles.freePrice}>
+                                                Free
+                                            </span>
+                                        ) : (
+                                            <>
+                                                <span className={homeCoursesStyles.salePrice}>
+                                                    ₹{course.price?.sale ?? "-"}
+                                                </span>
+                                                {course.price?.original && (
+                                                    <span className={homeCoursesStyles.originalPrice}>
+                                                        ₹{course.price.original}
+                                                    </span>
+                                                )}
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                         )
                     })}
+                </div>
+                {/* CTA Button */}
+                <div className={homeCoursesStyles.ctaContainer}>
+                    <div className={homeCoursesStyles.ctaWrapper}>
+                        <span className={homeCoursesStyles.ctaGlow}
+                            style={{
+                                zIndex: 0,
+                                background:
+                                    "conic-gradient(from 0deg, rgba(236,72,153,0.9), rgba(99,102,241,0.9), rgba(139,92,246,0.9), rgba(236,72,153,0.9))",
+                                filter: "blur(5px)",
+                                opacity: 0.8,
+                            }}
+                        />
+                        <button
+                            onClick={handleBrowseClick}
+                            className={homeCoursesStyles.ctaButton}
+                            style={{
+                                background:
+                                    "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
+                            }}
+                        >
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
