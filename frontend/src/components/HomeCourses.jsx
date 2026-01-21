@@ -33,6 +33,15 @@ const HomeCourses = () => {
     });
   };
 
+  const handleCourseClick = (id) => {
+    const token = localStorage.getItem("token")
+    if(!token) {
+        showLoginToast();
+        return;
+    }
+    navigate(`/course/${id}`);
+  };
+
 
   return (
     <div className={homeCoursesStyles.container}>
