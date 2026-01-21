@@ -142,25 +142,27 @@ const Testimonial = () => {
                 {testimonials.map((t, i) => (
                     <div
                         key={t.id}
-                        onMouseMove={(e) => onMouseMove(e, cardsRef.current[i], i)}
-                        onMouseLeave={() => onMouseLeave(cardsRef.current[i])}
                         className={testimonialStyles.cardWrapper}
                     >
                         <div className={testimonialStyles.glowBorder}></div>
                         <div className={testimonialStyles.backgroundPattern}>
                             <div className={testimonialStyles.floatingElement1}></div>
                             <div className={testimonialStyles.floatingElement2}></div>
-
-                            <article ref={(el) => (cardsRef.current[i] = el)} className={testimonialStyles.card} style={{boxShadow: testimonialStyles.cardShadow,}}>
-                                <div className={testimonialStyles.courseBadge}>
-                                    <div className={testimonialStyles.courseBadgeDot}></div>
-                                    <span className={testimonialStyles.courseBadgeText}>
-                                        {t.course}
-                                    </span>
-                                </div>
-                            </article>
-                            
                         </div>
+                        <article
+                            ref={(el) => (cardsRef.current[i] = el)}
+                            onMouseMove={(e) => onMouseMove(e, e.currentTarget, i)}
+                            onMouseLeave={(e) => onMouseLeave(e.currentTarget)}
+                            className={testimonialStyles.card}
+                            style={{boxShadow: testimonialStyles.cardShadow,}}
+                        >
+                            <div className={testimonialStyles.courseBadge}>
+                                <div className={testimonialStyles.courseBadgeDot}></div>
+                                <span className={testimonialStyles.courseBadgeText}>
+                                    {t.course}
+                                </span>
+                            </div>
+                        </article>
                     </div>
                 ))}
             </div>
