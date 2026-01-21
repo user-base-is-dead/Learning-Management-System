@@ -3,6 +3,7 @@ import { homeCoursesStyles } from "../assets/dummyStyles"
 import { coursesData } from "../assets/dummyHdata"
 import { Star,User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const HomeCourses = () => {
     const navigate = useNavigate();
@@ -40,6 +41,72 @@ const HomeCourses = () => {
         return;
     }
     navigate(`/course/${id}`);
+  };
+
+  const handleBrowseClick = () => {
+    const token = localStorage.getItem("token")
+
+    if(!token) {
+        toast.error("Please login to access courses",{
+            position: "top-right",
+            transition: Slide,
+            autoClose: 3000,
+            theme: "dark"
+        });
+        return;
+    }
+    navigate("/courses");
+  }
+
+    const handleSetRating = (e, courseId, rating) => {
+    e.stopPropagation();
+    setUserRatings((prev) => ({ ...prev, [courseId]: rating }));
+  };
+
+  const renderInteractiveStars = (course) => {
+    const userRating = userRatings[course.id] || 0;
+    const hover = hoverRatings[course.id] || 0;
+    const displayRating = hover || userRating;
+
+    return (
+      <div className={homeCoursesStyles.starsContainer}>
+        <div
+          className={homeCoursesStyles.interactiveStars}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {Array.from({ length: 5 }).map((_, i) => {
+            const idx = i + 1;
+            const filled = idx <= displayRating;
+
+            return (
+              <button
+                key={i}
+                onClick={(e) => handleSetRating(e, course.id, idx)}
+                onMouseEnter={() =>
+                  setHoverRatings((s) => ({ ...s, [course.id]: idx }))
+                }
+                onMouseLeave={() =>
+                  setHoverRatings((s) => ({ ...s, [course.id]: 0 }))
+                }
+                className={`${homeCoursesStyles.starButton} ${
+                  filled
+                    ? homeCoursesStyles.starButtonActive
+                    : homeCoursesStyles.starButtonInactive
+                }`}
+                style={{ background: "transparent" }}
+              >
+                <Star
+                  size={16}
+                  fill={filled ? "currentColor" : "none"}
+                  stroke="currentColor"
+                  className={homeCoursesStyles.starIcon}
+                />
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
   };
 
 
