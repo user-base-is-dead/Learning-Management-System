@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { homeCoursesStyles } from "../assets/dummyStyles"
 import { coursesData } from "../assets/dummyHdata"
-import { Star, User } from "lucide-react";
+import { ArrowRight, Star, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { Slide, toast } from "react-toastify";
+import { Slide, toast, ToastContainer } from "react-toastify";
 
 const HomeCourses = () => {
     const navigate = useNavigate();
@@ -183,10 +183,18 @@ const HomeCourses = () => {
                                     "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
                             }}
                         >
+                            <span className={homeCoursesStyles.ctaButtonContent}>
+                                <span className={homeCoursesStyles.ctaText}>
+                                    Discover Courses
+                                </span>
+                                <ArrowRight className={homeCoursesStyles.ctaIcon} />
+                            </span>
                         </button>
                     </div>
                 </div>
             </div>
+            <ToastContainer position=" top-right" autoClose={3000} theme="dark" transition={Slide} />
+            <style jsx>{homeCoursesStyles.animations}</style>
         </div>
     )
 }
