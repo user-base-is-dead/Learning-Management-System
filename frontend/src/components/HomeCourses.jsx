@@ -127,6 +127,9 @@ const HomeCourses = () => {
                                 <div className={homeCoursesStyles.imageContainer}>
                                     <img src={course.image} alt={course.name} className={homeCoursesStyles.courseImage} loading="lazy" />
                                 </div>
+                            <div className={homeCoursesStyles.courseInfo}>
+                                <h3 className={`${courseFont} ${homeCoursesStyles.courseName}`}></h3>
+                            </div>
                             </div>
                         )
                     })}
