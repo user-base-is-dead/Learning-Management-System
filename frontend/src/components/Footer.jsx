@@ -201,9 +201,22 @@ const Footer = () => {
                                 );
                             })}
                         </div>
+                        <div className={footerStyles.designCredit}>
+                            <div className={footerStyles.designCreditContainer}>
+                                <div className={footerStyles.designCreditGradient}></div>
+                                <p className={footerStyles.designCreditText}>
+                                    Designed by{" "}
+                                    <a href={contactInfo.website} target="_blank" className={footerStyles.designCreditLink}>
+                                        {contactInfo.designBy}
+                                    </a>
+                                </p>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <style>{footerCustomStyles}</style>
         </footer>
     )
 }

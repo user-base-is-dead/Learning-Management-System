@@ -40,13 +40,13 @@ export const supportLinks = [
 
 
 export const contactInfo = {
-addressLine1: '123 Triveni Nagar',
-city: 'Lucknow',
-phone: '+91 8299431275',
+addressLine1: 'Aerodrome Area Lane 8, Palaspalli',
+city: 'Odisha',
+phone: '+91 xxxxxxxxxx',
 phoneHours: 'Mon-Fri, 9AM-6PM',
-email: 'hexagonsservices@gmail.com',
-website: 'https://hexagondigitalservices.com',
-designBy: 'HexagonDigitalServices'
+email: 'debasritmishra8@gmail.com',
+website: 'https://mishradev.com',
+designBy: 'Mishra'
 };
 
 
