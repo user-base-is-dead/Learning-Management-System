@@ -206,7 +206,7 @@ const Footer = () => {
                                 <div className={footerStyles.designCreditGradient}></div>
                                 <p className={footerStyles.designCreditText}>
                                     Designed by{" "}
-                                    <a href={contactInfo.website} target="_blank" className={footerStyles.designCreditLink}>
+                                    <a href={contactInfo.website} target="_blank" rel="noreferrer" className={footerStyles.designCreditLink}>
                                         {contactInfo.designBy}
                                     </a>
                                 </p>
