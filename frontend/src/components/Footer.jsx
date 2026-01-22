@@ -93,6 +93,30 @@ const Footer = () => {
                             })}
                         </ul>
                     </div>
+
+                                        <div>
+                        <h4 className={`${footerStyles.sectionHeader} ${iconColors.purple}`}>
+                            <HandHelping className={footerStyles.sectionIcon} />
+                            Support
+                        </h4>
+
+                        <ul className={footerStyles.linksList}>
+                            {supportLinks.map((link, index) => {
+                                const Icon = iconMap[link.iconKey] || HelpCircle;
+                                return (
+                                    <li key={link.name}>
+                                        <a href={link.href} className={`${footerStyles.linkItem} ${iconColors.purple}`}
+                                            style={{
+                                                transitionDelay: `${index * 80}ms`,
+                                            }}>
+                                            <Icon className={`${footerStyles.linkIcon} ${iconColors.purple}`} />
+                                            <span className=" truncate">{link.name}</span>
+                                        </a>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>
