@@ -1,9 +1,102 @@
 import React from 'react'
+import { footerBackgroundStyles, contactIconGradients, iconColors, footerCustomStyles, footerStyles } from "../assets/dummyStyles"
+import { socialIcons, quickLinks, supportLinks, contactInfo } from "../assets/dummyFooter"
+import logo from "../assets/logo.png"
+import {
+  Twitter,
+  Instagram,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  BookOpen,
+  Users,
+  FileText,
+  HelpCircle,
+  Shield,
+  HandHelping,
+} from "lucide-react";
+
+const iconMap = {
+  Twitter,
+  Instagram,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  BookOpen,
+  Users,
+  FileText,
+  HelpCircle,
+  Shield,
+  HandHelping,
+};
 
 const Footer = () => {
-  return (
-    <div>Footer</div>
-  )
+    return (
+        <footer className={footerStyles.footer}>
+            <div className={footerBackgroundStyles.backgroundContainer}>
+                <div className={footerBackgroundStyles.floatingOrb1}></div>
+                <div className={footerBackgroundStyles.floatingOrb2}></div>
+                <div className={footerBackgroundStyles.floatingOrb3}></div>
+                <div className={footerBackgroundStyles.floatingOrb4}></div>
+
+                {/* subtle grid overlay, reduce opacity on small screens */}
+                <div className={footerBackgroundStyles.gridOverlay}>
+                    <div
+                        className="w-full h-full"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px)`,
+                            backgroundSize: "50px 50px",
+                        }}
+                    />
+                </div>
+            </div>
+            <div className={footerStyles.container}>
+                <div className={footerStyles.grid}>
+                    <div className={footerStyles.brandSection}>
+                    <div className={footerStyles.brandTransform}>
+                        <div className={footerStyles.brandContainer}>
+                            <div className={footerStyles.brandGradient}></div>
+                            <div className="relative z-10 font-serif flex items-center gap-3">
+                                <img src={logo} alt="logo" className="w-12 h-12" />
+                                <h3 className={footerStyles.brandTitle}>Mishra Project</h3>
+                            </div>
+                        </div>
+                        <p className={footerStyles.brandDescription}>Transform your learning journey with interactive courses and cutting-edge educational technology designed for modern learners.</p>
+                    </div>
+                </div>
+                {/* quick links */}
+                <div>
+                    <h4 className={`${footerStyles.sectionHeader} ${iconColors.cyan}`}>
+                    <ArrowRight className={footerStyles.sectionIcon}/>
+                    Quick Links
+                    </h4>
+
+                    <ul className={footerStyles.linksList}>
+                        {quickLinks.map((link, index) => {
+                            const Icon = iconMap[link.iconKey] || ArrowRight;
+                            return (
+                                <li key={link.name}>
+                                    <a href={link.href} className={`${footerStyles.linkItem} ${iconColors.cyan}`}
+                                    style={{
+                                        transitionDelay: `${index * 80}ms`,
+                                    }}>
+                                        <Icon className={`${footerStyles.linkIcon} ${iconColors.cyan}`}/>
+                                        <span className=" truncate">{link.name}</span>
+                                    </a>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </footer>
+    )
 }
 
 export default Footer
