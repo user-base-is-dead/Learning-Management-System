@@ -42,7 +42,7 @@ export const supportLinks = [
 export const contactInfo = {
 addressLine1: 'Aerodrome Area Lane 8, Palaspalli',
 city: 'Odisha',
-phone: '+91 xxxxxxxxxx',
+phone: '+91 XXXXXXXXXX',
 phoneHours: 'Mon-Fri, 9AM-6PM',
 email: 'debasritmishra8@gmail.com',
 website: 'https://mishradev.com',
