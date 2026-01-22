@@ -100,6 +100,7 @@ const Footer = () => {
                             Support
                         </h4>
 
+
                         <ul className={footerStyles.linksList}>
                             {supportLinks.map((link, index) => {
                                 const Icon = iconMap[link.iconKey] || HelpCircle;
