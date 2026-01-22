@@ -3,35 +3,35 @@ import { footerBackgroundStyles, contactIconGradients, iconColors, footerCustomS
 import { socialIcons, quickLinks, supportLinks, contactInfo } from "../assets/dummyFooter"
 import logo from "../assets/logo.png"
 import {
-  Twitter,
-  Instagram,
-  Linkedin,
-  Mail,
-  Phone,
-  MapPin,
-  ArrowRight,
-  BookOpen,
-  Users,
-  FileText,
-  HelpCircle,
-  Shield,
-  HandHelping,
+    Twitter,
+    Instagram,
+    Linkedin,
+    Mail,
+    Phone,
+    MapPin,
+    ArrowRight,
+    BookOpen,
+    Users,
+    FileText,
+    HelpCircle,
+    Shield,
+    HandHelping,
 } from "lucide-react";
 
 const iconMap = {
-  Twitter,
-  Instagram,
-  Linkedin,
-  Mail,
-  Phone,
-  MapPin,
-  ArrowRight,
-  BookOpen,
-  Users,
-  FileText,
-  HelpCircle,
-  Shield,
-  HandHelping,
+    Twitter,
+    Instagram,
+    Linkedin,
+    Mail,
+    Phone,
+    MapPin,
+    ArrowRight,
+    BookOpen,
+    Users,
+    FileText,
+    HelpCircle,
+    Shield,
+    HandHelping,
 };
 
 const Footer = () => {
@@ -58,41 +58,41 @@ const Footer = () => {
             <div className={footerStyles.container}>
                 <div className={footerStyles.grid}>
                     <div className={footerStyles.brandSection}>
-                    <div className={footerStyles.brandTransform}>
-                        <div className={footerStyles.brandContainer}>
-                            <div className={footerStyles.brandGradient}></div>
-                            <div className="relative z-10 font-serif flex items-center gap-3">
-                                <img src={logo} alt="logo" className="w-12 h-12" />
-                                <h3 className={footerStyles.brandTitle}>Mishra Project</h3>
+                        <div className={footerStyles.brandTransform}>
+                            <div className={footerStyles.brandContainer}>
+                                <div className={footerStyles.brandGradient}></div>
+                                <div className="relative z-10 font-serif flex items-center gap-3">
+                                    <img src={logo} alt="logo" className="w-12 h-12" />
+                                    <h3 className={footerStyles.brandTitle}>Mishra Project</h3>
+                                </div>
                             </div>
+                            <p className={footerStyles.brandDescription}>Transform your learning journey with interactive courses and cutting-edge educational technology designed for modern learners.</p>
                         </div>
-                        <p className={footerStyles.brandDescription}>Transform your learning journey with interactive courses and cutting-edge educational technology designed for modern learners.</p>
                     </div>
-                </div>
-                {/* quick links */}
-                <div>
-                    <h4 className={`${footerStyles.sectionHeader} ${iconColors.cyan}`}>
-                    <ArrowRight className={footerStyles.sectionIcon}/>
-                    Quick Links
-                    </h4>
+                    {/* quick links */}
+                    <div>
+                        <h4 className={`${footerStyles.sectionHeader} ${iconColors.cyan}`}>
+                            <ArrowRight className={footerStyles.sectionIcon} />
+                            Quick Links
+                        </h4>
 
-                    <ul className={footerStyles.linksList}>
-                        {quickLinks.map((link, index) => {
-                            const Icon = iconMap[link.iconKey] || ArrowRight;
-                            return (
-                                <li key={link.name}>
-                                    <a href={link.href} className={`${footerStyles.linkItem} ${iconColors.cyan}`}
-                                    style={{
-                                        transitionDelay: `${index * 80}ms`,
-                                    }}>
-                                        <Icon className={`${footerStyles.linkIcon} ${iconColors.cyan}`}/>
-                                        <span className=" truncate">{link.name}</span>
-                                    </a>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
+                        <ul className={footerStyles.linksList}>
+                            {quickLinks.map((link, index) => {
+                                const Icon = iconMap[link.iconKey] || ArrowRight;
+                                return (
+                                    <li key={link.name}>
+                                        <a href={link.href} className={`${footerStyles.linkItem} ${iconColors.cyan}`}
+                                            style={{
+                                                transitionDelay: `${index * 80}ms`,
+                                            }}>
+                                            <Icon className={`${footerStyles.linkIcon} ${iconColors.cyan}`} />
+                                            <span className=" truncate">{link.name}</span>
+                                        </a>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>
