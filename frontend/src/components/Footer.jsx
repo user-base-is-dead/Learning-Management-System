@@ -117,6 +117,13 @@ const Footer = () => {
                             })}
                         </ul>
                     </div>
+                    {/* contact info */}
+                    <div>
+                        <h4 className={`${footerStyles.sectionHeader} ${iconColors.emerald}`}>
+                            <Phone className={footerStyles.sectionIcon}/>
+                            Contact Us
+                        </h4>
+                    </div>
                 </div>
             </div>
         </footer>
