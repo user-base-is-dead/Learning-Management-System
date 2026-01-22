@@ -3,6 +3,7 @@ import Navbar from '../components/navbar'
 import Banner from "../components/Banner"
 import HomeCourses from "../components/HomeCourses"
 import Testimonial from "../components/Testimonial";
+import Footer from "../components/Footer";
 
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
       <Banner/>
       <HomeCourses/>
       <Testimonial/>
+      <Footer/>
     </div>
   );
 };
