@@ -123,7 +123,84 @@ const Footer = () => {
                             <Phone className={footerStyles.sectionIcon}/>
                             Contact Us
                         </h4>
+
+                        <div className={footerStyles.contactSpace}>
+                            <div className={footerStyles.contactItem}>
+                                <div className={`${footerStyles.contactIconContainer} ${contactIconGradients.address}`}>
+                                    <MapPin className={`${footerStyles.contactIcon} ${iconColors.cyan600}`}/>
+                                </div>
+                                <div className={footerStyles.contactTextContainer}>
+                                    <p className={footerStyles.contactTextContainer}>
+                                        {contactInfo.addressLine1}
+                                    </p>
+                                    <p className={footerStyles.contactTextSecondary}>
+                                        {contactInfo.city}
+                                    </p>
+                                </div>
+                            </div>
+
+                                                        <div className={footerStyles.contactItem}>
+                                <div className={`${footerStyles.contactIconContainer} ${contactIconGradients.phone}`}>
+                                    <Phone className={`${footerStyles.contactIcon} ${iconColors.purple600}`}/>
+                                </div>
+                                <div className={footerStyles.contactTextContainer}>
+                                    <p className={footerStyles.contactTextContainer}>
+                                        {contactInfo.phone}
+                                    </p>
+                                    <p className={footerStyles.contactTextSecondary}>
+                                        {contactInfo.phoneHours}
+                                    </p>
+                                </div>
+                            </div>
+
+                                                        <div className={footerStyles.contactItem}>
+                                <div className={`${footerStyles.contactIconContainer} ${contactIconGradients.email}`}>
+                                    <Mail className={`${footerStyles.contactIcon} ${iconColors.emerald600}`}/>
+                                </div>
+                                <div className={footerStyles.contactTextContainer}>
+                                    <p className={footerStyles.contactTextContainer}>
+                                        {contactInfo.email}
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                {/* social */}
+                <div className={footerStyles.socialSection}>
+                    <div className={footerStyles.socialContainer}>
+            <div className={footerStyles.socialIconsContainer}>
+              {socialIcons.map((social, index) => {
+                const IconComponent = iconMap[social.iconKey] || Twitter;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    aria-label={social.name}
+                    className={footerStyles.socialIconLink}
+                    style={{ animationDelay: `${index * 80}ms` }}
+                  >
+                    {/* subtle hover overlay only matters on pointer devices */}
+                    <div
+                      className={`${footerStyles.socialIconContainer} ${social.bgColor}`}
+                    >
+                      <div className={footerStyles.socialIconInner}>
+                        <IconComponent className={footerStyles.socialIcon} />
+                      </div>
+
+                      {/* small tooltip on hover for pointer devices; hidden on touch by default */}
+                      <div className={footerStyles.socialTooltip}>
+                        {social.name}
+                        <div className={footerStyles.socialTooltipArrow} />
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
                 </div>
             </div>
         </footer>
