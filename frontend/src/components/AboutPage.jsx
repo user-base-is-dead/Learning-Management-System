@@ -1,8 +1,11 @@
-import React from 'react'
-import { Star } from "lucide-react";
+import React, { useEffect, useState } from 'react'
+import { Section, Star } from "lucide-react";
 import { aboutUsStyles, aboutUsAnimations } from "../assets/dummyStyles"
 import { counterTargets, statsMeta, missionVisionValues, teamMembers, values, testimonials } from "../assets/dummyAbout"
 import AboutBanner from "../assets/AboutBannerImage.png"
+import {DotLottieReact} from "@lottiefiles/dotlottie-react"
+
+
 const AboutPage = () => {
     const [counterValues, setCounterValues] = useState({
         students: 0,
@@ -98,7 +101,21 @@ const AboutPage = () => {
                 <section key={section.type} className={`${aboutUsStyles.sectionContainer} ${section.bgColor} ${index % 2 === 1 ? "bg-white" : ""
                     }`}>
                     <div className={aboutUsStyles.sectionGrid}>
-                        <div className={`${aboutUsStyles.sectionContentGrid} ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}></div>
+                        <div className={`${aboutUsStyles.sectionContentGrid} ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}>
+                            <div className={`${aboutUsStyles.sectionImageContainer} ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                                <div className={aboutUsStyles.sectionImage}>
+                                    <DotLottieReact src={section.dotLottie} loop autoplay />
+                                </div>
+                            </div>
+                            <div className={`${aboutUsStyles.sectionContent} ${index %2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
+                                <div className={aboutUsStyles.sectionBadge}>
+                                    <section.icon className={`${aboutUsStyles.sectionIcon} ${section.color}`}/>
+                                    <span className={aboutUsStyles.sectionBadgeText}>
+                                        {section.subtitle}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
             ))}
