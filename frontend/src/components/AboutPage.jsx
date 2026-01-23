@@ -4,7 +4,57 @@ import { aboutUsStyles, aboutUsAnimations } from "../assets/dummyStyles"
 import { counterTargets, statsMeta, missionVisionValues, teamMembers, values, testimonials } from "../assets/dummyAbout"
 import AboutBanner from "../assets/AboutBannerImage.png"
 const AboutPage = () => {
+    const [counterValues, setCounterValues] = useState({
+        students: 0,
+        courses: 0,
+        successRate: 0,
+        countries: 0,
+        certificates: 0,
+        support: 0,
+    });
+
+    // Animated counter effect using imported counterTargets
+    useEffect(() => {
+        const duration = 2000;
+        const steps = 60;
+        const stepDuration = duration / steps;
+        const timers = [];
+
+        Object.keys(counterTargets).forEach((key) => {
+            let current = 0;
+            const target = counterTargets[key];
+            const increment = target / steps;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                setCounterValues((prev) => ({
+                    ...prev,
+                    [key]: Math.floor(current),
+                }));
+            }, stepDuration);
+
+            timers.push(timer);
+        });
+
+        return () => timers.forEach((t) => clearInterval(t));
+    }, []);
+
+    const formatStatNumber = (key) => {
+        if (key === "support") return "24/7";
+        if (key === "successRate") return `${counterValues.successRate}%`;
+        const val = counterValues[key] ?? 0;
+        // certificates might be large -> show with commas and plus
+        if (key === "certificates") return `${val.toLocaleString()}+`;
+        return `${val.toLocaleString()}+`;
+    };
+
+
     return (
+
         <div className={aboutUsStyles.container}>
             <section className={aboutUsStyles.heroSection}>
                 <div className={aboutUsStyles.heroBackground}>
@@ -27,8 +77,31 @@ const AboutPage = () => {
                         <Star className={aboutUsStyles.trustIcon} />
                         Trusted by 50,000+ students worldwide
                     </div>
+                    <h1 className={aboutUsStyles.mainHeading}>About LearnHub</h1>
+                    <p className={aboutUsStyles.subHeading}>Empowering millions to achieve dreams through
+                        <span className={aboutUsStyles.inlineHighlight}>accessible education</span></p>
+                    <div className={aboutUsStyles.statsGrid}>
+                        {statsMeta.slice(0, 4).map((stat, index) => (
+                            <div key={index} className={aboutUsStyles.statCard} style={{
+                                minWidth: 120
+                            }}>
+                                <div className={aboutUsStyles.statNumber}>
+                                    {formatStatNumber(stat.key)}
+                                </div>
+                                <div className={aboutUsStyles.statLabel}>{stat.label}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
+            {missionVisionValues.map((section, index) => (
+                <section key={section.type} className={`${aboutUsStyles.sectionContainer} ${section.bgColor} ${index % 2 === 1 ? "bg-white" : ""
+                    }`}>
+                    <div className={aboutUsStyles.sectionGrid}>
+                        <div className={`${aboutUsStyles.sectionContentGrid} ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}></div>
+                    </div>
+                </section>
+            ))}
             <style jsx>{aboutUsAnimations}</style>
         </div>
     )
