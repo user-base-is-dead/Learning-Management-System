@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BadgeCheck, Section, Star, ShieldUser } from "lucide-react";
+import { BadgeCheck, Section, Star, ShieldUser, MessageCircleCode } from "lucide-react";
 import { aboutUsStyles, aboutUsAnimations } from "../assets/dummyStyles"
 import { counterTargets, statsMeta, missionVisionValues, teamMembers, values, testimonials } from "../assets/dummyAbout"
 import AboutBanner from "../assets/AboutBannerImage.png"
@@ -241,6 +241,89 @@ const AboutPage = () => {
                     </div>
                 </div>
             </section>
+
+            <section className={aboutUsStyles.teamSection}>
+                <div className={aboutUsStyles.sectionGrid}>
+                    <div className={aboutUsStyles.teamHeader}>
+                        <h2 className={aboutUsStyles.teamTitle}>Meet Our Leadership</h2>
+                        <p className={aboutUsStyles.teamSubtitle}>Passionate educators, innovators, and visionaries dedicate to your success.</p>
+                    </div>
+                    <div className={aboutUsStyles.teamGrid}>{teamMembers.map((member, index) => (
+                        <div key={index} className={aboutUsStyles.teamMember}>
+                            <div className={aboutUsStyles.teamImageContainer}>
+                                <div className={aboutUsStyles.teamImage}>
+                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover rounded-full"/>
+                                </div>
+                            </div>
+                            <h3 className={aboutUsStyles.teamName}>{member.name}</h3>
+                            <div className={aboutUsStyles.teamRole}>{member.role}</div>
+                            <p className={aboutUsStyles.teamBio}>{member.bio}</p>
+                        </div>
+                    ))}</div>
+                </div>
+            </section>
+            {/* Testimonials Section */}
+      <section className={aboutUsStyles.testimonialsSection}>
+        <div className={aboutUsStyles.sectionGrid}>
+          <div className={aboutUsStyles.testimonialsHeader}>
+            <h2 className={aboutUsStyles.testimonialsTitle}>
+              What Our Students Say
+            </h2>
+            <p className={aboutUsStyles.testimonialsSubtitle}>
+              Real stories from real learners who transformed their careers
+            </p>
+          </div>
+          <div className={aboutUsStyles.testimonialsGrid}>
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className={aboutUsStyles.testimonialCard}>
+                <div className={aboutUsStyles.testimonialStars}>
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className={aboutUsStyles.testimonialStar} />
+                  ))}
+                </div>
+                <p className={aboutUsStyles.testimonialText}>
+                  "{testimonial.text}"
+                </p>
+                <div className={aboutUsStyles.testimonialAuthor}>
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className={aboutUsStyles.testimonialAvatar}
+                  />
+                  <div>
+                    <div className={aboutUsStyles.testimonialAuthorName}>
+                      {testimonial.name}
+                    </div>
+                    <div className={aboutUsStyles.testimonialAuthorRole}>
+                      {testimonial.role}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* cta section */}
+      <section className={aboutUsStyles.ctaSection}>
+        <div className={aboutUsStyles.ctaOrb1}></div>
+        <div className={aboutUsStyles.ctaOrb2}></div>
+        <div className={aboutUsStyles.ctaContent}>
+            <h2 className={aboutUsStyles.ctaTitle}>
+                Ready to Transform Your Future?
+            </h2>
+            <p className={aboutUsStyles.ctaDescription}>
+                Join millions of learners who have transformed their lives with LearnHub. Start your journey today with a 7-day free trail.
+            </p>
+            <div className={aboutUsStyles.ctaButtons}>
+                <a href="/contact" className={aboutUsStyles.ctaButton}>
+                <MessageCircleCode className={aboutUsStyles.ctaButtonIcon}/>
+                Talk to Advisor
+                </a>
+            </div>
+        </div>
+      </section>
             <style jsx>{aboutUsAnimations}</style>
         </div>
     )
