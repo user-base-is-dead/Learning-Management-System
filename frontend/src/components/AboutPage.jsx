@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Section, Star } from "lucide-react";
+import { BadgeCheck, Section, Star } from "lucide-react";
 import { aboutUsStyles, aboutUsAnimations } from "../assets/dummyStyles"
 import { counterTargets, statsMeta, missionVisionValues, teamMembers, values, testimonials } from "../assets/dummyAbout"
 import AboutBanner from "../assets/AboutBannerImage.png"
-import {DotLottieReact} from "@lottiefiles/dotlottie-react"
+import { DotLottieReact } from "@lottiefiles/dotlottie-react"
+import { features } from "../assets/dummyBanner";
 
 
 const AboutPage = () => {
@@ -107,12 +108,29 @@ const AboutPage = () => {
                                     <DotLottieReact src={section.dotLottie} loop autoplay />
                                 </div>
                             </div>
-                            <div className={`${aboutUsStyles.sectionContent} ${index %2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
+                            <div className={`${aboutUsStyles.sectionContent} ${index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
                                 <div className={aboutUsStyles.sectionBadge}>
-                                    <section.icon className={`${aboutUsStyles.sectionIcon} ${section.color}`}/>
+                                    <section.icon className={`${aboutUsStyles.sectionIcon} ${section.color}`} />
                                     <span className={aboutUsStyles.sectionBadgeText}>
                                         {section.subtitle}
                                     </span>
+                                </div>
+                                <h2 className={aboutUsStyles.sectionTitle}>{section.title}</h2>
+                                <p className={aboutUsStyles.sectionDescription}>
+                                    {section.description}
+                                </p>
+
+                                <div className={aboutUsStyles.featuresContainer}>
+                                    {section.features.map((feature, featureIndex) => (
+                                        <div key={featureIndex} className={aboutUsStyles.featureItem}>
+                                            <div className={`${aboutUsStyles.featureIcon} ${section.color}`}>
+                                                <BadgeCheck className={aboutUsStyles.featureIconSvg}/>
+                                            </div>
+                                            <span className={aboutUsStyles.featureText}>
+                                                {feature}
+                                            </span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
