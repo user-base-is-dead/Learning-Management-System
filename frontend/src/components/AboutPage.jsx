@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BadgeCheck, Section, Star } from "lucide-react";
+import { BadgeCheck, Section, Star, ShieldUser } from "lucide-react";
 import { aboutUsStyles, aboutUsAnimations } from "../assets/dummyStyles"
 import { counterTargets, statsMeta, missionVisionValues, teamMembers, values, testimonials } from "../assets/dummyAbout"
 import AboutBanner from "../assets/AboutBannerImage.png"
@@ -137,6 +137,110 @@ const AboutPage = () => {
                     </div>
                 </section>
             ))}
+
+
+            {/* Enhanced Values Principles Section */}
+            <section className={aboutUsStyles.valuesSection}>
+                <div className={aboutUsStyles.sectionGrid}>
+                    <div className={aboutUsStyles.valuesHeader}>
+                        <div className={aboutUsStyles.valuesBadge}>
+                            <ShieldUser className={aboutUsStyles.valuesBadgeIcon} />
+                            <span className={aboutUsStyles.valuesBadgeText}>
+                                Our Guiding Principles
+                            </span>
+                        </div>
+                        <h2 className={aboutUsStyles.valuesTitle}>
+                            Core Values That Define Us
+                        </h2>
+                        <p className={aboutUsStyles.valuesSubtitle}>
+                            The foundation of everything we do at LearnHub
+                        </p>
+                    </div>
+
+                    <div className={aboutUsStyles.valuesGrid}>
+                        {values.map((value, index) => (
+                            <div key={index} className={aboutUsStyles.valueCard}>
+                                <div
+                                    className={`${aboutUsStyles.valueGradient} ${value.color}`}
+                                ></div>
+
+                                <h3
+                                    className={aboutUsStyles.valueCardTitle}
+                                    title={value.title}
+                                >
+                                    {value.title}
+                                </h3>
+
+                                <p className={aboutUsStyles.valueCardDescription}>
+                                    {value.description}
+                                </p>
+
+                                <ul className={aboutUsStyles.valueFeatures}>
+                                    {value.features.map((feature, featureIndex) => (
+                                        <li
+                                            key={featureIndex}
+                                            className={aboutUsStyles.valueFeatureItem}
+                                        >
+                                            <div
+                                                className={`${aboutUsStyles.valueFeatureDot} ${value.color}`}
+                                            ></div>
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <div
+                                    className={`${aboutUsStyles.valueUnderline} ${value.color}`}
+                                ></div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
+            {/* Testimonials Section */}
+            <section className={aboutUsStyles.testimonialsSection}>
+                <div className={aboutUsStyles.sectionGrid}>
+                    <div className={aboutUsStyles.testimonialsHeader}>
+                        <h2 className={aboutUsStyles.testimonialsTitle}>
+                            What Our Students Say
+                        </h2>
+                        <p className={aboutUsStyles.testimonialsSubtitle}>
+                            Real stories from real learners who transformed their careers
+                        </p>
+                    </div>
+                    <div className={aboutUsStyles.testimonialsGrid}>
+                        {testimonials.map((testimonial, index) => (
+                            <div key={index} className={aboutUsStyles.testimonialCard}>
+                                <div className={aboutUsStyles.testimonialStars}>
+                                    {[...Array(testimonial.rating)].map((_, i) => (
+                                        <Star key={i} className={aboutUsStyles.testimonialStar} />
+                                    ))}
+                                </div>
+                                <p className={aboutUsStyles.testimonialText}>
+                                    "{testimonial.text}"
+                                </p>
+                                <div className={aboutUsStyles.testimonialAuthor}>
+                                    <img
+                                        src={testimonial.image}
+                                        alt={testimonial.name}
+                                        className={aboutUsStyles.testimonialAvatar}
+                                    />
+                                    <div>
+                                        <div className={aboutUsStyles.testimonialAuthorName}>
+                                            {testimonial.name}
+                                        </div>
+                                        <div className={aboutUsStyles.testimonialAuthorRole}>
+                                            {testimonial.role}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
             <style jsx>{aboutUsAnimations}</style>
         </div>
     )
