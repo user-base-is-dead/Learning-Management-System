@@ -1,4 +1,5 @@
 import React from 'react'
+import { Star } from "lucide-react";
 import { aboutUsStyles, aboutUsAnimations } from "../assets/dummyStyles"
 import { counterTargets, statsMeta, missionVisionValues, teamMembers, values, testimonials } from "../assets/dummyAbout"
 import AboutBanner from "../assets/AboutBannerImage.png"
