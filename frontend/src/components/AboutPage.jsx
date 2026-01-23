@@ -124,7 +124,7 @@ const AboutPage = () => {
                                     {section.features.map((feature, featureIndex) => (
                                         <div key={featureIndex} className={aboutUsStyles.featureItem}>
                                             <div className={`${aboutUsStyles.featureIcon} ${section.color}`}>
-                                                <BadgeCheck className={aboutUsStyles.featureIconSvg}/>
+                                                <BadgeCheck className={aboutUsStyles.featureIconSvg} />
                                             </div>
                                             <span className={aboutUsStyles.featureText}>
                                                 {feature}
